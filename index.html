@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>迎男而解 · 中老年男性穴位贴敷定位系统</title>
+<style>
+:root {
+  --c-primary: #2D1B0E;
+  --c-primary-soft: #4A2E1A;
+  --c-gold: #B8935A;
+  --c-gold-light: #D4B67A;
+  --c-gold-pale: #F0E4CC;
+  --c-bg: #FBF9F5;
+  --c-bg-warm: #F5EFE5;
+  --c-white: #FFFFFF;
+  --c-text: #1F1409;
+  --c-text-sub: #5C4A38;
+  --c-text-muted: #96826C;
+  --c-border: #EAE0CE;
+  --c-success: #2E7D5B;
+  --c-danger: #B84A3A;
+  --c-warning: #C88A2E;
+  --shadow-xs: 0 1px 3px rgba(45, 27, 14, 0.04);
+  --shadow-sm: 0 4px 12px rgba(45, 27, 14, 0.06);
+  --shadow-md: 0 12px 32px rgba(45, 27, 14, 0.10);
+  --shadow-lg: 0 24px 56px rgba(45, 27, 14, 0.14);
+  --radius-sm: 10px;
+  --radius-md: 18px;
+  --radius-lg: 28px;
+  --radius-xl: 40px;
+  --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  --font-sans: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+  --font-serif: "Songti SC", "SimSun", serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--font-sans);
+  background: var(--c-bg);
+  color: var(--c-text);
+  font-size: 16px;
+  line-height: 1.75;
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+input, select, textarea { font-family: inherit; font-size: inherit; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+/* 导航 */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; height: 72px;
+  background: rgba(251, 249, 245, 0.88);
+  backdrop-filter: saturate(180%) blur(24px);
+  -webkit-backdrop-filter: saturate(180%) blur(24px);
+  border-bottom: 1px solid rgba(45, 27, 14, 0.06);
+  z-index: 1000;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 32px;
+  transition: var(--transition);
+}
+.nav-brand { display: flex; align-items: center; gap: 12px; cursor: pointer; }
+.nav-logo {
+  width: 40px; height: 40px; border-radius: 12px;
+  background: linear-gradient(135deg, var(--c-primary), var(--c-primary-soft));
+  display: flex; align-items: center; justify-content: center;
+  color: var(--c-gold); font-weight: 800; font-size: 20px;
+  box-shadow: 0 4px 12px rgba(45, 27, 14, 0.2);
+}
+.nav-brand-text { display: flex; flex-direction: column; line-height: 1.2; }
+.nav-brand-text strong { font-size: 17px; font-weight: 800; color: var(--c-primary); letter-spacing: 3px; }
+.nav-brand-text small { font-size: 11px; color: var(--c-text-muted); letter-spacing: 0.5px; font-weight: 400; }
+.nav-menu { display: flex; gap: 2px; }
+.nav-menu button {
+  padding: 9px 16px; border-radius: 999px; font-size: 14px;
+  color: var(--c-text-sub); transition: var(--transition); font-weight: 500;
+}
+.nav-menu button:hover { color: var(--c-primary); background: rgba(184, 147, 90, 0.1); }
+.nav-menu button.active { color: var(--c-white); background: var(--c-primary); box-shadow: 0 4px 12px rgba(45, 27, 14, 0.2); }
+
+/* 主内容 */
+.main { max-width: 1180px; margin: 0 auto; padding: 100px 24px 80px; }
+.page { display: none; }
+.page.active { display: block; animation: pageIn 0.45s ease; }
+@keyframes pageIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+/* 按钮 */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 13px 30px; border-radius: 999px; font-size: 15px; font-weight: 600;
+  transition: var(--transition); letter-spacing: 0.5px; white-space: nowrap;
+}
+.btn-primary { background: var(--c-primary); color: var(--c-white); box-shadow: 0 6px 20px rgba(45, 27, 14, 0.24); }
+.btn-primary:hover { background: var(--c-primary-soft); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(45, 27, 14, 0.32); }
+.btn-gold { background: linear-gradient(135deg, var(--c-gold), var(--c-gold-light)); color: var(--c-primary); box-shadow: 0 6px 20px rgba(184, 147, 90, 0.35); font-weight: 700; }
+.btn-gold:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(184, 147, 90, 0.45); }
+.btn-ghost { background: var(--c-white); color: var(--c-primary); border: 1.5px solid var(--c-border); }
+.btn-ghost:hover { border-color: var(--c-gold); background: rgba(184, 147, 90, 0.06); }
+.btn-block { width: 100%; }
+.btn-sm { padding: 9px 20px; font-size: 13px; }
+
+/* 首页 */
+.hero { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 64px; align-items: center; min-height: calc(100vh - 200px); padding: 40px 0 60px; }
+.hero-left { position: relative; }
+.hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; color: var(--c-gold); font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 24px; }
+.hero-eyebrow::before { content: ""; width: 32px; height: 1px; background: var(--c-gold); }
+.hero-title { font-family: var(--font-serif); font-size: 60px; font-weight: 700; color: var(--c-primary); line-height: 1.12; letter-spacing: 1px; margin-bottom: 24px; }
+.hero-title .accent { color: var(--c-gold); position: relative; display: inline-block; }
+.hero-title .accent::after { content: ""; position: absolute; left: 0; right: 0; bottom: 6px; height: 12px; background: rgba(184, 147, 90, 0.18); z-index: -1; border-radius: 4px; }
+.hero-desc { font-size: 16px; color: var(--c-text-sub); line-height: 1.9; margin-bottom: 36px; max-width: 480px; }
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 48px; }
+.hero-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; padding-top: 32px; border-top: 1px solid var(--c-border); }
+.metric { display: flex; flex-direction: column; }
+.metric-num { font-family: var(--font-serif); font-size: 34px; font-weight: 700; color: var(--c-primary); line-height: 1; letter-spacing: -0.5px; }
+.metric-num .unit { font-size: 16px; color: var(--c-gold); margin-left: 2px; font-weight: 600; }
+.metric-label { font-size: 12px; color: var(--c-text-muted); margin-top: 8px; letter-spacing: 0.5px; }
+
+/* 3D动画 */
+.hero-visual { position: relative; display: flex; align-items: center; justify-content: center; min-height: 460px; }
+.scene { width: 320px; height: 320px; position: relative; }
+.scene-glow { position: absolute; top: 50%; left: 50%; width: 260px; height: 260px; margin: -130px 0 0 -130px; border-radius: 50%; background: radial-gradient(circle, rgba(184, 147, 90, 0.28) 0%, transparent 70%); filter: blur(20px); animation: glow 5s ease-in-out infinite; }
+@keyframes glow { 0%, 100% { transform: scale(1); opacity: 0.8; } 50% { transform: scale(1.15); opacity: 1; } }
+.scene-core { position: absolute; top: 50%; left: 50%; width: 90px; height: 90px; margin: -45px 0 0 -45px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, var(--c-gold-light), var(--c-gold) 40%, var(--c-primary) 100%); box-shadow: 0 0 48px rgba(184, 147, 90, 0.7), inset 0 -8px 16px rgba(45, 27, 14, 0.3); animation: coreBreathe 4s ease-in-out infinite; }
+@keyframes coreBreathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.08); } }
+.orbit { position: absolute; top: 50%; left: 50%; border-radius: 50%; border: 1.5px solid rgba(184, 147, 90, 0.3); transform-style: preserve-3d; }
+.orbit-1 { width: 180px; height: 180px; margin: -90px 0 0 -90px; animation: spin1 14s linear infinite; }
+.orbit-2 { width: 240px; height: 240px; margin: -120px 0 0 -120px; border-color: rgba(184, 147, 90, 0.2); animation: spin2 20s linear infinite; }
+.orbit-3 { width: 300px; height: 300px; margin: -150px 0 0 -150px; border-color: rgba(184, 147, 90, 0.12); animation: spin3 28s linear infinite; }
+@keyframes spin1 { from { transform: rotateX(72deg) rotateZ(0deg); } to { transform: rotateX(72deg) rotateZ(360deg); } }
+@keyframes spin2 { from { transform: rotateX(72deg) rotateZ(360deg); } to { transform: rotateX(72deg) rotateZ(0deg); } }
+@keyframes spin3 { from { transform: rotateX(72deg) rotateZ(0deg); } to { transform: rotateX(72deg) rotateZ(360deg); } }
+.orbit-dot { position: absolute; top: -5px; left: 50%; width: 10px; height: 10px; margin-left: -5px; border-radius: 50%; background: var(--c-gold); box-shadow: 0 0 14px var(--c-gold-light); }
+.orbit-2 .orbit-dot { background: var(--c-primary-soft); box-shadow: 0 0 14px var(--c-primary-soft); }
+.orbit-3 .orbit-dot { background: var(--c-success); box-shadow: 0 0 14px var(--c-success); width: 8px; height: 8px; margin-left: -4px; top: -4px; }
+
+/* 首页产品胶囊 */
+.hero-products { position: absolute; right: -30px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 14px; z-index: 3; }
+.product-pill { display: flex; align-items: center; gap: 12px; padding: 12px 18px; border-radius: 999px; background: var(--c-white); box-shadow: var(--shadow-md); border: 1px solid var(--c-border); font-size: 13px; color: var(--c-text-sub); font-weight: 600; cursor: pointer; transition: var(--transition); white-space: nowrap; }
+.product-pill:hover { transform: translateX(-8px); border-color: var(--c-gold); box-shadow: var(--shadow-lg); }
+.pill-icon { width: 32px; height: 32px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; }
+.pill-1 .pill-icon { background: linear-gradient(135deg, #F0E4CC, #E0C89A); }
+.pill-2 .pill-icon { background: linear-gradient(135deg, #D6E8DD, #A8CCB8); }
+.pill-3 .pill-icon { background: linear-gradient(135deg, #E4DCCC, #C8B8A0); }
+.pill-4 .pill-icon { background: linear-gradient(135deg, #ECD8D4, #D4A8A0); }
+
+/* 通用区块 */
+.section { padding: 72px 0; }
+.section-head { text-align: center; margin-bottom: 56px; }
+.section-tag { display: inline-block; padding: 5px 14px; border-radius: 999px; background: rgba(184, 147, 90, 0.12); color: var(--c-primary); font-size: 12px; font-weight: 700; letter-spacing: 2px; margin-bottom: 16px; text-transform: uppercase; }
+.section-title { font-family: var(--font-serif); font-size: 38px; font-weight: 700; color: var(--c-primary); letter-spacing: 2px; margin-bottom: 14px; }
+.section-desc { font-size: 15px; color: var(--c-text-muted); max-width: 580px; margin: 0 auto; line-height: 1.8; }
+
+/* 产品体系（流式布局） */
+.product-flow { display: flex; flex-direction: column; gap: 0; }
+.flow-item { display: grid; grid-template-columns: 100px 1fr auto; gap: 32px; align-items: center; padding: 32px 0; border-bottom: 1px solid var(--c-border); cursor: pointer; transition: var(--transition); position: relative; }
+.flow-item:last-child { border-bottom: none; }
+.flow-item::before { content: ""; position: absolute; left: 0; bottom: -1px; width: 0; height: 1px; background: var(--c-gold); transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+.flow-item:hover::before { width: 100%; }
+.flow-num { font-family: var(--font-serif); font-size: 44px; font-weight: 700; color: var(--c-gold); line-height: 1; letter-spacing: -1px; transition: var(--transition); text-align: center; }
+.flow-item:hover .flow-num { color: var(--c-primary); }
+.flow-body { padding-left: 8px; }
+.flow-tag { font-size: 11px; color: var(--c-gold); font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px; }
+.flow-title { font-family: var(--font-serif); font-size: 24px; font-weight: 700; color: var(--c-primary); margin-bottom: 10px; letter-spacing: 1px; }
+.flow-desc { font-size: 14px; color: var(--c-text-sub); line-height: 1.8; max-width: 640px; }
+.flow-arrow { font-size: 24px; color: var(--c-gold); transition: var(--transition); opacity: 0; transform: translateX(-12px); }
+.flow-item:hover .flow-arrow { opacity: 1; transform: translateX(0); }
+.flow-icon { width: 100px; height: 100px; display: flex; align-items: center; justify-content: center; position: relative; }
+.flow-icon svg { width: 80px; height: 80px; transition: var(--transition); }
+.flow-item:hover .flow-icon svg { transform: scale(1.08); }
+.flow-icon-ring { position: absolute; inset: 0; border: 1.5px solid rgba(184, 147, 90, 0.25); border-radius: 50%; transition: var(--transition); }
+.flow-item:hover .flow-icon-ring { border-color: var(--c-gold); transform: scale(1.05); }
+
+/* 双标签 */
+.tab-switch { display: flex; gap: 8px; margin-bottom: 32px; padding: 6px; background: var(--c-bg-warm); border-radius: 999px; width: fit-content; margin-left: auto; margin-right: auto; box-shadow: inset 0 2px 6px rgba(45, 27, 14, 0.05); }
+.tab-btn { padding: 11px 28px; border-radius: 999px; font-size: 15px; font-weight: 700; color: var(--c-text-sub); transition: var(--transition); letter-spacing: 0.5px; white-space: nowrap; }
+.tab-btn:hover { color: var(--c-primary); }
+.tab-btn.active { background: var(--c-white); color: var(--c-primary); box-shadow: 0 4px 12px rgba(45, 27, 14, 0.1); }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; animation: pageIn 0.4s ease; }
+
+/* 测评表单 */
+.quiz-progress { display: flex; align-items: center; gap: 16px; margin-bottom: 32px; padding: 18px 24px; background: var(--c-white); border-radius: var(--radius-md); border: 1px solid var(--c-border); box-shadow: var(--shadow-xs); }
+.progress-bar { flex: 1; height: 8px; border-radius: 4px; background: var(--c-bg-warm); overflow: hidden; }
+.progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--c-gold), var(--c-gold-light)); border-radius: 4px; transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+.progress-text { font-size: 13px; color: var(--c-text-sub); font-weight: 700; white-space: nowrap; letter-spacing: 0.5px; }
+
+.form-block { background: var(--c-white); border-radius: var(--radius-md); padding: 26px 28px; margin-bottom: 18px; border: 1px solid var(--c-border); transition: var(--transition); }
+.form-block:focus-within { border-color: var(--c-gold); box-shadow: 0 0 0 4px rgba(184, 147, 90, 0.1); }
+.form-block-title { font-size: 16px; font-weight: 700; color: var(--c-primary); margin-bottom: 18px; display: flex; align-items: flex-start; gap: 12px; line-height: 1.5; }
+.form-num { display: inline-flex; align-items: center; justify-content: center; min-width: 26px; height: 26px; padding: 0 6px; border-radius: 8px; background: var(--c-primary); color: var(--c-gold-light); font-size: 12px; font-weight: 800; flex-shrink: 0; margin-top: 2px; }
+
+.opt-list { display: flex; flex-direction: column; gap: 8px; }
+.opt { display: flex; align-items: center; padding: 13px 18px; border-radius: var(--radius-sm); border: 1.5px solid var(--c-border); background: var(--c-bg); font-size: 15px; color: var(--c-text-sub); cursor: pointer; transition: var(--transition); position: relative; }
+.opt:hover { border-color: var(--c-gold); background: rgba(184, 147, 90, 0.06); }
+.opt input { position: absolute; opacity: 0; pointer-events: none; }
+.opt:has(input:checked) { background: linear-gradient(135deg, rgba(184, 147, 90, 0.14), rgba(184, 147, 90, 0.06)); border-color: var(--c-gold); color: var(--c-primary); font-weight: 600; box-shadow: 0 2px 8px rgba(184, 147, 90, 0.15); }
+.opt:has(input:checked)::after { content: "✓"; position: absolute; right: 16px; top: 50%; transform: translateY(-50%); color: var(--c-gold); font-weight: 800; font-size: 16px; }
+.opt-indicator { width: 18px; height: 18px; border-radius: 50%; border: 2px solid var(--c-border); margin-right: 14px; flex-shrink: 0; transition: var(--transition); position: relative; }
+.opt:has(input:checked) .opt-indicator { border-color: var(--c-gold); background: var(--c-gold); }
+.opt:has(input:checked) .opt-indicator::after { content: ""; position: absolute; top: 50%; left: 50%; width: 6px; height: 6px; margin: -3px 0 0 -3px; border-radius: 50%; background: var(--c-white); }
+
+.form-input { width: 100%; padding: 14px 18px; border-radius: var(--radius-sm); border: 1.5px solid var(--c-border); background: var(--c-bg); font-size: 15px; color: var(--c-text); transition: var(--transition); }
+.form-input:focus { outline: none; border-color: var(--c-gold); background: var(--c-white); box-shadow: 0 0 0 4px rgba(184, 147, 90, 0.1); }
+.form-input::placeholder { color: var(--c-text-muted); }
+
+/* 舌苔 */
+.tongue-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.tongue-item { padding: 18px 10px; border-radius: var(--radius-sm); border: 1.5px solid var(--c-border); background: var(--c-bg); text-align: center; cursor: pointer; transition: var(--transition); }
+.tongue-item:hover { border-color: var(--c-gold); transform: translateY(-2px); }
+.tongue-item.selected { border-color: var(--c-gold); background: linear-gradient(135deg, rgba(184, 147, 90, 0.14), rgba(184, 147, 90, 0.04)); box-shadow: 0 0 0 4px rgba(184, 147, 90, 0.1); }
+.tongue-item svg { display: block; margin: 0 auto 10px; }
+.tongue-item span { font-size: 12px; color: var(--c-text-sub); font-weight: 600; display: block; line-height: 1.4; }
+
+/* 结果框 */
+.result-box { background: linear-gradient(135deg, var(--c-white), var(--c-bg-warm)); border-radius: var(--radius-lg); padding: 36px; border: 1.5px solid var(--c-gold); margin-top: 32px; display: none; box-shadow: var(--shadow-md); }
+.result-box.show { display: block; animation: pageIn 0.5s ease; }
+.result-tag { display: inline-block; padding: 6px 16px; border-radius: 999px; background: var(--c-primary); color: var(--c-gold-light); font-size: 12px; font-weight: 700; letter-spacing: 2px; margin-bottom: 18px; }
+.result-title { font-family: var(--font-serif); font-size: 28px; font-weight: 700; color: var(--c-primary); margin-bottom: 18px; letter-spacing: 1px; }
+.result-body { font-size: 15px; color: var(--c-text-sub); line-height: 2; }
+.result-body strong { color: var(--c-primary); font-weight: 700; }
+.result-saved { margin-top: 20px; padding: 12px 18px; background: rgba(46, 125, 91, 0.1); border-radius: var(--radius-sm); font-size: 13px; color: var(--c-success); font-weight: 700; display: inline-block; }
+.result-actions { margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* 家庭端 */
+.family-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 32px; flex-wrap: wrap; gap: 16px; }
+.family-header h2 { font-family: var(--font-serif); font-size: 32px; font-weight: 700; color: var(--c-primary); letter-spacing: 2px; margin: 0; }
+.family-sync-tip { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 999px; background: rgba(46, 125, 91, 0.1); color: var(--c-success); font-size: 13px; font-weight: 700; }
+.family-sync-tip .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--c-success); animation: pulse 2s infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+.family-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.family-card { background: var(--c-white); border-radius: var(--radius-lg); padding: 28px; border: 1px solid var(--c-border); position: relative; overflow: hidden; transition: var(--transition); }
+.family-card:hover { box-shadow: var(--shadow-md); }
+.family-card::before { content: ""; position: absolute; top: 0; left: 0; width: 5px; height: 100%; background: linear-gradient(180deg, var(--c-gold), var(--c-gold-light)); }
+.family-card-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+.family-card-title { font-size: 17px; font-weight: 800; color: var(--c-primary); letter-spacing: 1px; display: flex; align-items: center; gap: 8px; }
+.family-card-title .num-badge { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 6px; background: var(--c-primary); color: var(--c-gold-light); font-size: 11px; font-weight: 800; }
+.family-card-badge { font-size: 11px; padding: 4px 10px; border-radius: 999px; background: rgba(184, 147, 90, 0.12); color: var(--c-primary); font-weight: 700; }
+.family-row { display: flex; justify-content: space-between; align-items: center; padding: 11px 0; font-size: 14px; color: var(--c-text-sub); border-bottom: 1px dashed var(--c-border); }
+.family-row:last-child { border-bottom: none; }
+.family-row .label { display: flex; align-items: center; gap: 8px; }
+.family-row .label::before { content: ""; width: 4px; height: 4px; border-radius: 50%; background: var(--c-gold); }
+.family-row .val { color: var(--c-primary); font-weight: 700; text-align: right; }
+.family-empty { font-size: 13px; color: var(--c-text-muted); text-align: center; padding: 32px 0; line-height: 1.8; }
+.tag-ok { color: var(--c-success); font-weight: 700; }
+.tag-warn { color: var(--c-warning); font-weight: 700; }
+.tag-danger { color: var(--c-danger); font-weight: 700; }
+
+/* 使用指南 */
+.steps { display: flex; flex-direction: column; gap: 18px; }
+.step { display: flex; gap: 20px; padding: 26px 28px; background: var(--c-white); border-radius: var(--radius-md); border: 1px solid var(--c-border); transition: var(--transition); }
+.step:hover { border-color: var(--c-gold); box-shadow: var(--shadow-sm); transform: translateX(4px); }
+.step-num { width: 48px; height: 48px; border-radius: 14px; background: linear-gradient(135deg, var(--c-primary), var(--c-primary-soft)); color: var(--c-gold-light); display: flex; align-items: center; justify-content: center; font-family: var(--font-serif); font-size: 22px; font-weight: 700; flex-shrink: 0; box-shadow: 0 6px 16px rgba(45, 27, 14, 0.18); }
+.step-body h4 { font-size: 17px; font-weight: 800; color: var(--c-primary); margin-bottom: 8px; letter-spacing: 0.5px; }
+.step-body p { font-size: 14px; color: var(--c-text-sub); line-height: 1.8; }
+
+/* 健康科普 */
+.knowledge-hero { background: linear-gradient(135deg, var(--c-primary), var(--c-primary-soft)); border-radius: var(--radius-lg); padding: 48px 40px; color: var(--c-white); margin-bottom: 32px; position: relative; overflow: hidden; }
+.knowledge-hero::before { content: ""; position: absolute; top: -40%; right: -10%; width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(184, 147, 90, 0.25), transparent 70%); }
+.knowledge-hero-tag { display: inline-block; padding: 5px 14px; border-radius: 999px; background: rgba(184, 147, 90, 0.2); color: var(--c-gold-light); font-size: 12px; font-weight: 700; letter-spacing: 2px; margin-bottom: 20px; position: relative; }
+.knowledge-hero-title { font-family: var(--font-serif); font-size: 32px; font-weight: 700; color: var(--c-white); margin-bottom: 16px; letter-spacing: 2px; position: relative; }
+.knowledge-hero-desc { font-size: 15px; color: rgba(255, 255, 255, 0.7); line-height: 1.9; max-width: 720px; position: relative; }
+.knowledge-list { display: flex; flex-direction: column; gap: 16px; }
+.knowledge-card { background: var(--c-white); border-radius: var(--radius-md); padding: 28px 32px; border: 1px solid var(--c-border); cursor: pointer; transition: var(--transition); position: relative; }
+.knowledge-card:hover { border-color: var(--c-gold); box-shadow: var(--shadow-md); transform: translateX(4px); }
+.knowledge-card-head { display: flex; align-items: flex-start; gap: 18px; margin-bottom: 14px; }
+.knowledge-num { flex-shrink: 0; width: 40px; height: 40px; border-radius: 12px; background: linear-gradient(135deg, var(--c-gold-pale), rgba(240, 228, 204, 0.5)); color: var(--c-primary); display: flex; align-items: center; justify-content: center; font-family: var(--font-serif); font-size: 18px; font-weight: 700; }
+.knowledge-card-title { font-size: 18px; font-weight: 800; color: var(--c-primary); line-height: 1.4; letter-spacing: 0.5px; }
+.knowledge-card-body { font-size: 14px; color: var(--c-text-sub); line-height: 1.9; padding-left: 58px; }
+.knowledge-card-more { padding-left: 58px; margin-top: 12px; display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; color: var(--c-gold); letter-spacing: 1px; }
+.knowledge-card-more::after { content: "→"; transition: var(--transition); }
+.knowledge-card:hover .knowledge-card-more::after { transform: translateX(6px); }
+
+/* 弹窗 */
+.modal-mask { position: fixed; inset: 0; background: rgba(31, 20, 9, 0.55); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); display: none; align-items: center; justify-content: center; z-index: 2000; padding: 20px; }
+.modal-mask.show { display: flex; }
+.modal-box { background: var(--c-white); border-radius: var(--radius-lg); padding: 32px; max-width: 460px; width: 100%; box-shadow: var(--shadow-lg); animation: pageIn 0.35s ease; max-height: 80vh; overflow-y: auto; }
+.modal-box h3 { font-size: 20px; font-weight: 800; color: var(--c-primary); margin-bottom: 14px; letter-spacing: 1px; }
+.modal-box p { font-size: 15px; color: var(--c-text-sub); line-height: 1.9; margin-bottom: 24px; }
+
+/* 页脚 */
+.footer { background: var(--c-primary); color: rgba(255, 255, 255, 0.7); padding: 64px 24px 40px; margin-top: 80px; text-align: center; }
+.footer-brand { font-family: var(--font-serif); font-size: 24px; font-weight: 700; color: var(--c-gold-light); letter-spacing: 6px; margin-bottom: 14px; }
+.footer-slogan { font-size: 14px; color: rgba(255, 255, 255, 0.5); margin-bottom: 28px; letter-spacing: 1px; }
+.footer-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 32px; }
+.footer-links button { font-size: 13px; color: rgba(255, 255, 255, 0.6); transition: var(--transition); }
+.footer-links button:hover { color: var(--c-gold-light); }
+.footer-divider { width: 60px; height: 1px; background: rgba(184, 147, 90, 0.3); margin: 0 auto 24px; }
+.footer-disclaimer { font-size: 12px; color: rgba(255, 255, 255, 0.4); line-height: 1.9; max-width: 640px; margin: 0 auto; }
+
+/* 移动端 */
+@media (max-width: 960px) {
+  .hero { grid-template-columns: 1fr; gap: 40px; min-height: auto; padding: 20px 0 40px; }
+  .hero-title { font-size: 42px; }
+  .hero-visual { order: -1; min-height: 340px; }
+  .scene { width: 260px; height: 260px; }
+  .orbit-1 { width: 150px; height: 150px; margin: -75px 0 0 -75px; }
+  .orbit-2 { width: 200px; height: 200px; margin: -100px 0 0 -100px; }
+  .orbit-3 { width: 250px; height: 250px; margin: -125px 0 0 -125px; }
+  .hero-products { position: static; transform: none; flex-direction: row; flex-wrap: wrap; margin-top: 24px; justify-content: center; }
+  .product-pill { font-size: 12px; padding: 10px 14px; }
+  .nav { height: 64px; padding: 0 20px; }
+  .nav-menu { display: none; }
+  .main { padding: 88px 20px 60px; }
+  .section { padding: 48px 0; }
+  .section-title { font-size: 26px; }
+  .flow-item { grid-template-columns: 60px 1fr; gap: 20px; padding: 24px 0; }
+  .flow-num { font-size: 32px; }
+  .flow-title { font-size: 19px; }
+  .flow-icon { display: none; }
+  .flow-arrow { display: none; }
+  .tongue-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero-actions { flex-direction: column; }
+  .hero-actions .btn { width: 100%; }
+  .hero-metrics { grid-template-columns: 1fr; gap: 20px; padding-top: 24px; }
+  .metric { flex-direction: row; align-items: baseline; gap: 12px; }
+  .metric-num { font-size: 28px; }
+  .metric-label { margin-top: 0; }
+  .family-grid { grid-template-columns: 1fr; }
+  .knowledge-hero { padding: 32px 24px; }
+  .knowledge-hero-title { font-size: 24px; }
+  .knowledge-card { padding: 22px 20px; }
+  .knowledge-card-head { gap: 14px; }
+  .knowledge-card-body, .knowledge-card-more { padding-left: 0; }
+  .tab-switch { width: 100%; margin-bottom: 24px; }
+  .tab-btn { flex: 1; padding: 10px 16px; font-size: 14px; }
+}
+
+@media (max-width: 480px) {
+  .hero-title { font-size: 34px; }
+  .section-title { font-size: 22px; }
+  .form-block { padding: 22px; }
+  .opt { font-size: 14px; padding: 12px 14px; }
+  .result-box { padding: 24px; }
+  .result-title { font-size: 22px; }
+}
+
+/* 移动端底部导航 */
+.mobile-nav { display: none; position: fixed; bottom: 0; left: 0; right: 0; height: 64px; background: rgba(251, 249, 245, 0.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-top: 1px solid var(--c-border); z-index: 999; padding-bottom: env(safe-area-inset-bottom); }
+.mobile-nav-inner { display: grid; grid-template-columns: repeat(5, 1fr); height: 64px; align-items: center; }
+.mobile-nav-item { display: flex; flex-direction: column; align-items: center; gap: 3px; font-size: 10px; color: var(--c-text-muted); cursor: pointer; transition: var(--transition); font-weight: 600; }
+.mobile-nav-item .icon { font-size: 20px; line-height: 1; }
+.mobile-nav-item.active { color: var(--c-primary); }
+@media (max-width: 960px) { .mobile-nav { display: block; } body { padding-bottom: 64px; } }
+
+@media print {
+  .nav, .footer, .mobile-nav, .btn, .hero-visual { display: none !important; }
+  body { padding: 0; font-size: 12px; }
+  .page { display: block !important; page-break-after: always; }
+  .main { padding: 0; max-width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-brand" onclick="go('home')">
+    <div class="nav-logo">迎</div>
+    <div class="nav-brand-text">
+      <strong>迎男而解</strong>
+      <small>中老年男性穴位贴敷定位系统</small>
+    </div>
+  </div>
+  <div class="nav-menu">
+    <button class="active" data-nav="home" onclick="go('home')">首页</button>
+    <button data-nav="product" onclick="go('product')">产品体系</button>
+    <button data-nav="quiz" onclick="go('quiz')">穴位测评</button>
+    <button data-nav="guide" onclick="go('guide')">使用指南</button>
+    <button data-nav="science" onclick="go('science')">健康科普</button>
+    <button data-nav="family" onclick="go('family')">家庭端</button>
+    <button data-nav="about" onclick="go('about')">关于我们</button>
+  </div>
+</nav>
+
+<div class="main">
+
+<!-- 首页 -->
+<section class="page active" id="page-home">
+  <div class="hero">
+    <div class="hero-left">
+      <div class="hero-eyebrow">居家康养新方案</div>
+      <h1 class="hero-title">让老人<span class="accent">自己</span><br>就能贴准穴位</h1>
+      <p class="hero-desc">以骨性标志自校准的穿戴式定位带，解决中老年男性后腰穴位反手够不着、贴不准的居家康养难题。硬件、耗材、服务三层结构，构成完整的居家康养闭环。</p>
+      <div class="hero-actions">
+        <button class="btn btn-primary" onclick="go('quiz')">开始穴位测评</button>
+        <button class="btn btn-ghost" onclick="go('product')">了解产品体系</button>
+      </div>
+      <div class="hero-metrics">
+        <div class="metric"><div class="metric-num">40<span class="unit">%</span></div><div class="metric-label">50岁以上男性BPH患病率</div></div>
+        <div class="metric"><div class="metric-num">84.5<span class="unit">%</span></div><div class="metric-label">反手够不到后背</div></div>
+        <div class="metric"><div class="metric-num">3.52<span class="unit">年</span></div><div class="metric-label">平均延迟就诊</div></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="scene">
+        <div class="scene-glow"></div>
+        <div class="scene-core"></div>
+        <div class="orbit orbit-1"><div class="orbit-dot"></div></div>
+        <div class="orbit orbit-2"><div class="orbit-dot"></div></div>
+        <div class="orbit orbit-3"><div class="orbit-dot"></div></div>
+      </div>
+      <div class="hero-products">
+        <div class="product-pill pill-1" onclick="go('product')"><div class="pill-icon">🧲</div>骨性定位带</div>
+        <div class="product-pill pill-2" onclick="go('product')"><div class="pill-icon">🌿</div>压力刺激贴芯</div>
+        <div class="product-pill pill-3" onclick="go('family')"><div class="pill-icon">📱</div>子女端小程序</div>
+        <div class="product-pill pill-4" onclick="go('quiz')"><div class="pill-icon">📋</div>四型辨证测评</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 产品体系 -->
+<section class="page" id="page-product">
+  <div class="section">
+    <div class="section-head">
+      <span class="section-tag">Product System</span>
+      <h2 class="section-title">产品体系</h2>
+      <p class="section-desc">硬件耐用品、耗材复购品、数字化服务，三层结构构成完整的居家康养闭环</p>
+    </div>
+    <div class="product-flow">
+      <div class="flow-item" onclick="showModal('定位带详情', '腰带式前后同贴定位带。前片以肚脐孔和耻骨上缘为骨性标志自校准，后片以两侧髂嵴最高点连线自校准。按S/M/L三码适配不同体型，面料可反复清洗使用。核心结构已提交实用新型专利申请。')">
+        <div class="flow-icon"><div class="flow-icon-ring"></div>
+          <svg viewBox="0 0 120 120" fill="none">
+            <rect x="20" y="30" width="80" height="40" rx="20" stroke="#B8935A" stroke-width="2.5"/>
+            <rect x="35" y="42" width="14" height="14" rx="7" fill="#B8935A" opacity="0.5"/>
+            <rect x="53" y="42" width="14" height="14" rx="7" fill="#B8935A" opacity="0.7"/>
+            <rect x="71" y="42" width="14" height="14" rx="7" fill="#B8935A" opacity="0.5"/>
+            <path d="M20 50 L10 50" stroke="#B8935A" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M100 50 L110 50" stroke="#B8935A" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="60" cy="50" r="4" fill="#2D1B0E"/>
+          </svg>
+        </div>
+        <div class="flow-body">
+          <div class="flow-tag">01 / 硬件层</div>
+          <div class="flow-title">腰带式前后同贴定位带</div>
+          <div class="flow-desc">以骨性标志自校准的穿戴式结构，前片脐孔对准肚脐、耻骨缺口卡住耻骨上缘，后片髂嵴带卡在两侧胯骨最高点。用户无需认穴、无需量尺寸，一拉一扣即可完成前后配穴。</div>
+        </div>
+        <div class="flow-arrow">→</div>
+      </div>
+
+      <div class="flow-item" onclick="showModal('贴芯详情', '可替换穴位压力刺激贴芯。三层结构，背衬层、凸点层、胶布层。无药物成分，仅通过球状凸点对穴位施加物理外力。按第一类医疗器械“穴位压力刺激器具”合规备案，一盒12贴，独立包装。')">
+        <div class="flow-icon"><div class="flow-icon-ring"></div>
+          <svg viewBox="0 0 120 120" fill="none">
+            <rect x="30" y="20" width="60" height="80" rx="12" stroke="#2E7D5B" stroke-width="2.5"/>
+            <circle cx="45" cy="40" r="3.5" fill="#2E7D5B" opacity="0.5"/>
+            <circle cx="60" cy="40" r="3.5" fill="#2E7D5B" opacity="0.7"/>
+            <circle cx="75" cy="40" r="3.5" fill="#2E7D5B" opacity="0.5"/>
+            <circle cx="45" cy="60" r="3.5" fill="#2E7D5B" opacity="0.7"/>
+            <circle cx="60" cy="60" r="3.5" fill="#2E7D5B"/>
+            <circle cx="75" cy="60" r="3.5" fill="#2E7D5B" opacity="0.7"/>
+            <circle cx="45" cy="80" r="3.5" fill="#2E7D5B" opacity="0.5"/>
+            <circle cx="60" cy="80" r="3.5" fill="#2E7D5B" opacity="0.7"/>
+            <circle cx="75" cy="80" r="3.5" fill="#2E7D5B" opacity="0.5"/>
+          </svg>
+        </div>
+        <div class="flow-body">
+          <div class="flow-tag">02 / 耗材层</div>
+          <div class="flow-title">可替换穴位压力刺激贴芯</div>
+          <div class="flow-desc">三层结构，无药物成分，仅通过球状凸点对穴位施加物理外力。一盒12贴，独立包装，撕开即用。定位带是耐用品，贴芯是消耗品，形成按月复购结构。</div>
+        </div>
+        <div class="flow-arrow">→</div>
+      </div>
+
+      <div class="flow-item" onclick="go('family')">
+        <div class="flow-icon"><div class="flow-icon-ring"></div>
+          <svg viewBox="0 0 120 120" fill="none">
+            <rect x="38" y="18" width="44" height="84" rx="8" stroke="#4A2E1A" stroke-width="2.5"/>
+            <circle cx="60" cy="90" r="3" fill="#4A2E1A" opacity="0.5"/>
+            <rect x="46" y="30" width="28" height="4" rx="2" fill="#4A2E1A" opacity="0.4"/>
+            <rect x="46" y="42" width="28" height="4" rx="2" fill="#4A2E1A" opacity="0.6"/>
+            <rect x="46" y="54" width="20" height="4" rx="2" fill="#4A2E1A" opacity="0.8"/>
+            <path d="M48 70 Q60 64 72 70" stroke="#4A2E1A" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M48 78 Q60 72 72 78" stroke="#4A2E1A" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+          </svg>
+        </div>
+        <div class="flow-body">
+          <div class="flow-tag">03 / 服务层</div>
+          <div class="flow-title">子女端AI康养小程序</div>
+          <div class="flow-desc">付费的是45岁左右的子女，使用贴的是65岁以上的父亲。子女通过小程序完成建档、贴敷提醒、皮肤异常上报、周期复购。AI自动生成《父亲康养趋势周报》，让远方子女实时照看父亲健康。</div>
+        </div>
+        <div class="flow-arrow">→</div>
+      </div>
+
+      <div class="flow-item" onclick="go('quiz')">
+        <div class="flow-icon"><div class="flow-icon-ring"></div>
+          <svg viewBox="0 0 120 120" fill="none">
+            <rect x="28" y="20" width="64" height="80" rx="10" stroke="#B84A3A" stroke-width="2.5"/>
+            <path d="M42 42 L58 42" stroke="#B84A3A" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+            <path d="M42 56 L62 56" stroke="#B84A3A" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+            <path d="M42 70 L54 70" stroke="#B84A3A" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="76" cy="76" r="14" stroke="#B84A3A" stroke-width="2.5" fill="none"/>
+            <path d="M70 76 L74 80 L82 72" stroke="#B84A3A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="flow-body">
+          <div class="flow-tag">04 / 数字化</div>
+          <div class="flow-title">四型辨证测评系统</div>
+          <div class="flow-desc">基于IPSS下尿路症状评分与中医证型辨识问卷，自动判别肾阳不足倾向，推荐定位带尺码与贴芯类型。全程大字版图文选择题，中老年人可独立完成。</div>
+        </div>
+        <div class="flow-arrow">→</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 穴位测评（双标签） -->
+<section class="page" id="page-quiz">
+  <div class="section">
+    <div class="section-head">
+      <span class="section-tag">Assessment</span>
+      <h2 class="section-title">穴位测评</h2>
+      <p class="section-desc">请根据最近一个月的真实感受填写，本测评用于日常康养辅助，不构成医疗诊断</p>
+    </div>
+
+    <div class="tab-switch">
+      <button class="tab-btn active" data-tab="pre" onclick="switchTab('pre')">使用前评估</button>
+      <button class="tab-btn" data-tab="post" onclick="switchTab('post')">使用后随访</button>
+    </div>
+
+    <!-- 使用前评估 -->
+    <div class="tab-panel active" id="tab-pre">
+      <div class="quiz-progress">
+        <span class="progress-text">已完成 <span id="progressNum">0</span> / 22</span>
+        <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+      </div>
+
+      <form id="quizForm" onchange="updateProgress()">
+        <div class="form-block"><div class="form-block-title"><span class="form-num">01</span>您的年龄</div><input type="number" class="form-input" id="q_age" placeholder="请输入年龄（岁）"></div>
+        <div class="form-block"><div class="form-block-title"><span class="form-num">02</span>您的腰围（用于推荐定位带尺码）</div><input type="number" class="form-input" id="q_waist" placeholder="请输入腰围（cm）"></div>
+        <div class="form-block"><div class="form-block-title"><span class="form-num">03</span>您是否独居或白天独自在家？</div>
+          <div class="opt-list">
+            <label class="opt"><input type="radio" name="q_live" value="alone"><span class="opt-indicator"></span>是，经常一个人</label>
+            <label class="opt"><input type="radio" name="q_live" value="with"><span class="opt-indicator"></span>否，有人帮忙</label>
+          </div>
+        </div>
+        <div class="form-block"><div class="form-block-title"><span class="form-num">04</span>您是否曾使用过穴位贴敷产品？</div>
+          <div class="opt-list">
+            <label class="opt"><input type="radio" name="q_used" value="bad"><span class="opt-indicator"></span>用过，但觉得贴不准</label>
+            <label class="opt"><input type="radio" name="q_used" value="ok"><span class="opt-indicator"></span>用过，觉得还可以</label>
+            <label class="opt"><input type="radio" name="q_used" value="none"><span class="opt-indicator"></span>没用过</label>
+          </div>
+        </div>
+        <div class="form-block"><div class="form-block-title"><span class="form-num">05</span>过去一个月，您排完尿后觉得膀胱没排干净吗？</div>
+          <div class="opt-list">
+            <label class="opt"><input type="radio" name="q_ipss1" value="0"><span class="opt-indicator"></span>没有</label>
+            <label class="opt"><input type="radio" name="q_ipss1" value="1"><span class="opt-indicator"></span>偶尔</label>
+            <label class="opt"><input type="radio" name="q_ipss1" value="2"><span class="opt-indicator"></span>经常</label>
+            <label class="opt"><input type="radio" name="q_ipss1" value="3"><span class="opt-indicator"></span>几乎每次</label>
+          </div>
+        </div>
+        <div class="form-block"><div class="form-block-title"><span class="form-num">06</span>过去一个月，您排尿次数比别人多吗？</div>
+          <div class="opt-list">
+            <label class="opt"><input type="radio" name="q_ipss2" value="0"><span class="opt-indicator"></span>没有</label>
+            <label class="opt"><input type="radio" name="q_ipss2" value="1"><span class="opt-indicator"></span>偶尔</label>
+            <label class="opt"><input type="radio" name="q_ipss2" value="2"><span class="opt-indicator"></span>经常</label>
+            <label class="opt"><input type="radio" name="q_ipss2" value="3"><span class="opt-indicator"></span>非常频繁</label>
+          </div>
+        </div>
+        <div class="form-block"><div class="form-block-title"><span class="form-num">07</span>过去一个月，您晚上起夜几次？</div>
+          <div class="opt-list">
+            <label class="opt"><input type="radio" name="q_ipss3" value="0"><span class="opt-indicator"></span>0次</label>
+            <label class="opt"><input type="radio" name="q_ipss3" value="1"><span class="opt-indicator"></span>1次</label>
+            <label class="opt"><input type="radio" name="q_ipss3" value="2"><span class="opt-indicator"></span>2-3次</label>
+            <label class="opt"><input type="radio" name="q_ipss3" value="3"><span class="opt-indicator"></span>4次以上</label>
+          </div>
+        </div>
+        <div class="form-block"><div class="form-block-title"><span class="form-num">08</span>过去一个月，您是否有尿急、憋不住尿的感觉？</div>
+          <div class="opt-list">
+            <label class="opt"><input type="radio" name="q_ipss4" value="0"><span class="opt-indicator"></span>没有</label>
+            <label class="opt"><input type="radio" name="q_ipss4" value="1"><span class="opt-indicator"></span>偶尔</label>
+            <label class="opt"><input type="radio" name="q_ipss4" value="2"><span class="opt-indicator"></span>经常</label>
+            <label class="opt"><input type="radio" name="q_ipss4" value="3"><span class="opt-indicator"></span>几乎每次</label>
+          </div>
+        </div>
+        <div class="form-block"><div class="form-block-title"><span class="form-num">09</span>过去一个月，您的尿线变细了吗？</div>
+          <div class="opt-list">
+            <label class="opt"><input type="radio" name="q_ipss5" value="0"><span class="opt-indicator"></span>没有</label>
+            <label class="opt"><input type="radio" name="q_ipss5" value="1"><span class="opt-indicator"></span>偶尔</label>
+            <label class="opt"><input type="radio" name="q_ipss5" value="2"><span class="opt-indicator"></span>经常</label>
+            <label class="opt"><input type="radio" name="q_ipss5" value="3"><span class="opt-indicator"></span>一直很细</label>
+          </div>
+        </div>
+        <div class="form-block"><div class="form-block-title"><span class="form-num">10</span>过去一个月，您排尿时需要用力才能尿出来吗？</div>
+          <div class="opt-list">
+            <label class="opt"><input type="radio" name="q_ipss6" value="0"><span class="opt-indicator"></span>没有</label>
+            <label class="opt"><input type="radio" name="q_ipss6" value="1"><span class="opt-indicator"></span>偶尔</label>
+            <label class="opt"><input type="radio" name="q_ipss6" value="2"><span class="opt-indicator"></span>经常</label>
+            <label class="opt"><input type="radio" name="q_ipss6" value="3"><span class="opt-indicator"></span>几乎每次</label>
+          </div>
+        </div>
+        <div class="form-block"><div class="form-block-title"><span class="form-num">11</span>过去一个月，您排尿时断断续续、尿到一半停下来吗？</div>
+          <div class="opt-list">
+            <label class="opt"><input type="radio" name="q_ipss7" value="0"><span class="opt-indicator"></span>没有</label>
+            <label class="opt"><input type="radio" name="q_ipss7" value="1"><span class="opt-indicator"></span>偶尔</label>
+            <label class="opt"><input type="radio" name="q_ipss7" value="2"><span class="opt-indicator"></span>经常</label>
+            <label class="opt"><input type="radio" name="q_ipss7" value="3"><span class="opt-indicator"></span>几乎每次</label>
+          </div>
+        </div>
+        <div class="form-block"><div class="form-block-title"><span class="form-num">12</span>您会阴或小腹部主要感觉是什么？</div>
+          <div class="opt-list">
+            <label class="opt"><input type="radio" name="q_tcm1" value="damp"><span class="opt-indicator"></span>潮湿黏腻，内裤易脏</label>
+            <label class="opt"><input type="radio" name="q_tcm1" value="sting"><span class="opt-indicator"></span>像针扎一样刺痛</label>
+            <label class="opt"><input type="radio" name="q_tcm1" value="coldpain"><span class="opt-indicator"></span>冷痛发凉，像放了冰块</label>
+            <label class="opt"><input type="radio" name="q_tcm1" value="ache"><span class="opt-indicator"></span>腰膝酸冷，隐痛不适</label>
+          </div>
+        </div>
+        <div class="form-block"><div class="form-block-title"><span class="form-num">13</span>您平时怕冷还是怕热？</div>
+          <div class="opt-list">
+            <label class="opt"><input type="radio" name="q_tcm2" value="cold"><span class="opt-indicator"></span>特别怕冷，手脚冰凉</label>
+            <label class="opt"><input type="radio" name="q_tcm2" value="hot"><span class="opt-indicator"></span>怕热，手心脚心发热</label>
+            <label class="opt"><input type="radio" name="q_tcm2" value="none"><span class="opt-indicator"></span>都不明显</label>
+          </div>
+        </div>
+        <div class="form-block"><div class="form-block-title"><span class="form-num">14</span>您的小便颜色和感觉是？</div>
+          <div class="opt-list">
+            <label class="opt"><input type="radio" name="q_tcm3" value="yellow"><span class="opt-indicator"></span>尿黄、尿道灼热</label>
+            <label class="opt"><input type="radio" name="q_tcm3" value="clear"><span class="opt-indicator"></span>尿清长、夜尿多、没力气</label>
+            <label class="opt"><input type="radio" name="q_tcm3" value="freq"><span class="opt-indicator"></span>尿频但每次量不多，排不干净</label>
+            <label class="opt"><input type="radio" name="q_tcm3" value="cold"><span class="opt-indicator"></span>遇冷加重，得热舒服</label>
+          </div>
+        </div>
+        <div class="form-block"><div class="form-block-title"><span class="form-num">15</span>您平时的出汗情况是？</div>
+          <div class="opt-list">
+            <label class="opt"><input type="radio" name="q_tcm4" value="sweat"><span class="opt-indicator"></span>动一下就出虚汗</label>
+            <label class="opt"><input type="radio" name="q_tcm4" value="night"><span class="opt-indicator"></span>夜间盗汗，醒后汗止</label>
+            <label class="opt"><input type="radio" name="q_tcm4" value="less"><span class="opt-indicator"></span>不怎么出汗</label>
+          </div>
+        </div>
+        <div class="form-block"><div class="form-block-title"><span class="form-num">16</span>您最近的口干口渴情况？</div>
+          <div class="opt-list">
+            <label class="opt"><input type="radio" name="q_tcm5" value="hotwater"><span class="opt-indicator"></span>口干想喝水，喜欢喝热水</label>
+            <label class="opt"><input type="radio" name="q_tcm5" value="coldwater"><span class="opt-indicator"></span>口干想喝水，喜欢喝凉水</label>
+            <label class="opt"><input type="radio" name="q_tcm5" value="none"><span class="opt-indicator"></span>口干但不想喝水</label>
+          </div>
+        </div>
+        <div class="form-block"><div class="form-block-title"><span class="form-num">17</span>您最近的睡眠质量如何？</div>
+          <div class="opt-list">
+            <label class="opt"><input type="radio" name="q_tcm6" value="bad"><span class="opt-indicator"></span>入睡困难，易醒</label>
+            <label class="opt"><input type="radio" name="q_tcm6" value="tired"><span class="opt-indicator"></span>睡不醒，总觉得累</label>
+            <label class="opt"><input type="radio" name="q_tcm6" value="ok"><span class="opt-indicator"></span>睡眠尚可</label>
+          </div>
+        </div>
+        <div class="form-block"><div class="form-block-title"><span class="form-num">18</span>您平时腰膝的感觉是？</div>
+          <div class="opt-list">
+            <label class="opt"><input type="radio" name="q_tcm7" value="cold"><span class="opt-indicator"></span>腰膝酸软，遇冷加重</label>
+            <label class="opt"><input type="radio" name="q_tcm7" value="hot"><span class="opt-indicator"></span>腰膝酸软，伴有烦热</label>
+            <label class="opt"><input type="radio" name="q_tcm7" value="none"><span class="opt-indicator"></span>无明显感觉</label>
+          </div>
+        </div>
+        <div class="form-block"><div class="form-block-title"><span class="form-num">19</span>您对镜子看，舌苔最接近哪张图？</div>
+          <div class="tongue-grid" id="tongueGrid">
+            <div class="tongue-item" onclick="pickTongue('yellow', this)">
+              <svg width="76" height="54" viewBox="0 0 76 54"><rect x="8" y="5" width="60" height="44" rx="22" fill="#F0D5A8" stroke="#D4A86A" stroke-width="1.2"/><ellipse cx="38" cy="27" rx="20" ry="14" fill="#E8C87A"/><circle cx="28" cy="23" r="1.6" fill="#D4A86A"/><circle cx="48" cy="23" r="1.6" fill="#D4A86A"/><circle cx="38" cy="33" r="1.2" fill="#D4A86A"/></svg>
+              <span>舌苔黄腻</span>
+            </div>
+            <div class="tongue-item" onclick="pickTongue('purple', this)">
+              <svg width="76" height="54" viewBox="0 0 76 54"><rect x="8" y="5" width="60" height="44" rx="22" fill="#C9A8C9" stroke="#9C6B9C" stroke-width="1.2"/><ellipse cx="38" cy="27" rx="20" ry="14" fill="#B88BB8"/><circle cx="26" cy="23" r="2" fill="#6B3D6B"/><circle cx="50" cy="23" r="2" fill="#6B3D6B"/><circle cx="38" cy="31" r="1.6" fill="#6B3D6B"/></svg>
+              <span>舌质紫暗</span>
+            </div>
+            <div class="tongue-item" onclick="pickTongue('pale', this)">
+              <svg width="76" height="54" viewBox="0 0 76 54"><rect x="8" y="5" width="60" height="44" rx="22" fill="#F5E6D8" stroke="#D4C0A8" stroke-width="1.2"/><ellipse cx="38" cy="27" rx="20" ry="14" fill="#F0DCC8"/><path d="M22 23 Q26 21 30 23" stroke="#C8A88A" stroke-width="1.2" fill="none"/><path d="M46 23 Q50 21 54 23" stroke="#C8A88A" stroke-width="1.2" fill="none"/></svg>
+              <span>舌淡胖有齿痕</span>
+            </div>
+            <div class="tongue-item" onclick="pickTongue('red', this)">
+              <svg width="76" height="54" viewBox="0 0 76 54"><rect x="8" y="5" width="60" height="44" rx="22" fill="#E8A0A0" stroke="#C87070" stroke-width="1.2"/><ellipse cx="38" cy="27" rx="20" ry="14" fill="#E08888"/><circle cx="28" cy="23" r="1.2" fill="#C06060"/><circle cx="48" cy="23" r="1.2" fill="#C06060"/><circle cx="38" cy="31" r="1.2" fill="#C06060"/></svg>
+              <span>舌红少苔</span>
+            </div>
+          </div>
+          <input type="hidden" id="q_tcm8" value="">
+        </div>
+        <div class="form-block"><div class="form-block-title"><span class="form-num">20</span>您的工作或生活状态是？</div>
+          <div class="opt-list">
+            <label class="opt"><input type="radio" name="q_life1" value="sit"><span class="opt-indicator"></span>每天久坐办公/开车超过6小时</label>
+            <label class="opt"><input type="radio" name="q_life1" value="stand"><span class="opt-indicator"></span>经常站立走动</label>
+            <label class="opt"><input type="radio" name="q_life1" value="retire"><span class="opt-indicator"></span>退休居家，活动较少</label>
+          </div>
+        </div>
+        <div class="form-block"><div class="form-block-title"><span class="form-num">21</span>您是否有长期饮酒或吃辛辣的习惯？</div>
+          <div class="opt-list">
+            <label class="opt"><input type="radio" name="q_life2" value="often"><span class="opt-indicator"></span>经常</label>
+            <label class="opt"><input type="radio" name="q_life2" value="sometimes"><span class="opt-indicator"></span>偶尔</label>
+            <label class="opt"><input type="radio" name="q_life2" value="never"><span class="opt-indicator"></span>从不</label>
+          </div>
+        </div>
+        <div class="form-block"><div class="form-block-title"><span class="form-num">22</span>您的症状多久了？</div>
+          <div class="opt-list">
+            <label class="opt"><input type="radio" name="q_life3" value="acute"><span class="opt-indicator"></span>刚出现不久</label>
+            <label class="opt"><input type="radio" name="q_life3" value="chronic"><span class="opt-indicator"></span>反反复复1年以上</label>
+          </div>
+        </div>
+        <button type="button" class="btn btn-gold btn-block" onclick="submitQuiz()">提交评估</button>
+      </form>
+
+      <div class="result-box" id="resultBox">
+        <span class="result-tag">评估结果</span>
+        <div class="result-title" id="resultTitle"></div>
+        <div class="result-body" id="resultBody"></div>
+        <div class="result-saved" id="resultSaved"></div>
+        <div class="result-actions">
+          <button class="btn btn-primary btn-sm" onclick="go('family')">查看家庭端同步</button>
+          <button class="btn btn-ghost btn-sm" onclick="resetQuiz()">重新测评</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 使用后随访 -->
+    <div class="tab-panel" id="tab-post">
+      <p style="color:var(--c-text-muted); margin-bottom:24px; text-align:center; font-size:14px;">建议每使用7天填写一次随访问卷，帮助持续追踪康养进展</p>
+
+      <div class="quiz-progress">
+        <span class="progress-text">已完成 <span id="followupProgressNum">0</span> / 10</span>
+        <div class="progress-bar"><div class="progress-fill" id="followupProgressFill"></div></div>
+      </div>
+
+      <form id="followupForm" onchange="updateFollowupProgress()">
+        <div class="form-block"><div class="form-block-title"><span class="form-num">01</span>过去7天，您使用贴芯的次数</div>
+          <div class="opt-list">
+            <label class="opt"><input type="radio" name="f1" value="daily"><span class="opt-indicator"></span>每天1次</label>
+            <label class="opt"><input type="radio" name="f1" value="often"><span class="opt-indicator"></span>每周4-6次</label>
+            <label class="opt"><input type="radio" name="f1" value="sometimes"><span class="opt-indicator"></span>每周1-3次</label>
+            <label class="opt"><input type="radio" name="f1" value="none"><span class="opt-indicator"></span>没有使用</label>
+          </div>
+        </div>
+        <div class="form-block"><div class="form-block-title"><span class="form-num">02</span>您使用定位带时，是否能够自己独立完成？</div>
+          <div class="opt-list">
+            <label class="opt"><input type="radio" name="f2" value="easy"><span class="opt-indicator"></span>完全可以，一扣就准</label>
+            <label class="opt"><input type="radio" name="f2" value="help"><span class="opt-indicator"></span>需要家人帮忙</label>
+            <label class="opt"><input type="radio" name="f2" value="hard"><span class="opt-indicator"></span>还是觉得很难对准</label>
+          </div>
+        </div>
+        <div class="form-block"><div class="form-block-title"><span class="form-num">03</span>您觉得定位带佩戴舒适吗？</div>
+          <div class="opt-list">
+            <label class="opt"><input type="radio" name="f3" value="good"><span class="opt-indicator"></span>很舒适</label>
+            <label class="opt"><input type="radio" name="f3" value="ok"><span class="opt-indicator"></span>一般</label>
+            <label class="opt"><input type="radio" name="f3" value="bad"><span class="opt-indicator"></span>不舒服，勒得紧或滑动</label>
+          </div>
+        </div>
+        <div class="form-block"><div class="form-block-title"><span class="form-num">04</span>过去7天，您晚上起夜次数</div>
+          <div class="opt-list">
+            <label class="opt"><input type="radio" name="f4" value="less"><span class="opt-indicator"></span>比之前减少</label>
+            <label class="opt"><input type="radio" name="f4" value="same"><span class="opt-indicator"></span>和之前差不多</label>
+            <label class="opt"><input type="radio" name="f4" value="more"><span class="opt-indicator"></span>比之前增多</label>
+          </div>
+        </div>
+        <div class="form-block"><div class="form-block-title"><span class="form-num">05</span>过去7天，您排尿不畅、尿频的感觉</div>
+          <div class="opt-list">
+            <label class="opt"><input type="radio" name="f5" value="better"><span class="opt-indicator"></span>明显改善</label>
+            <label class="opt"><input type="radio" name="f5" value="slight"><span class="opt-indicator"></span>稍微改善</label>
+            <label class="opt"><input type="radio" name="f5" value="same"><span class="opt-indicator"></span>没有变化</label>
+            <label class="opt"><input type="radio" name="f5" value="worse"><span class="opt-indicator"></span>加重了</label>
+          </div>
+        </div>
+        <div class="form-block"><div class="form-block-title"><span class="form-num">06</span>过去7天，您的睡眠质量</div>
+          <div class="opt-list">
+            <label class="opt"><input type="radio" name="f6" value="better"><span class="opt-indicator"></span>明显改善</label>
+            <label class="opt"><input type="radio" name="f6" value="slight"><span class="opt-indicator"></span>稍微改善</label>
+            <label class="opt"><input type="radio" name="f6" value="same"><span class="opt-indicator"></span>没有变化</label>
+            <label class="opt"><input type="radio" name="f6" value="worse"><span class="opt-indicator"></span>变差了</label>
+          </div>
+        </div>
+        <div class="form-block"><div class="form-block-title"><span class="form-num">07</span>您对贴芯的舒适度评分（0-10分）</div><input type="number" class="form-input" id="f7" min="0" max="10" placeholder="请输入0-10分"></div>
+        <div class="form-block"><div class="form-block-title"><span class="form-num">08</span>贴敷部位是否出现以下情况？</div>
+          <div class="opt-list">
+            <label class="opt"><input type="radio" name="f8" value="none"><span class="opt-indicator"></span>没有异常</label>
+            <label class="opt"><input type="radio" name="f8" value="red"><span class="opt-indicator"></span>轻微发红，很快消退</label>
+            <label class="opt"><input type="radio" name="f8" value="itch"><span class="opt-indicator"></span>瘙痒、起疹</label>
+            <label class="opt"><input type="radio" name="f8" value="blister"><span class="opt-indicator"></span>红肿、水泡</label>
+          </div>
+        </div>
+        <div class="form-block"><div class="form-block-title"><span class="form-num">09</span>您对产品的整体满意度</div>
+          <div class="opt-list">
+            <label class="opt"><input type="radio" name="f9" value="very"><span class="opt-indicator"></span>非常满意</label>
+            <label class="opt"><input type="radio" name="f9" value="satisfied"><span class="opt-indicator"></span>满意</label>
+            <label class="opt"><input type="radio" name="f9" value="normal"><span class="opt-indicator"></span>一般</label>
+            <label class="opt"><input type="radio" name="f9" value="unsatisfied"><span class="opt-indicator"></span>不满意</label>
+          </div>
+        </div>
+        <div class="form-block"><div class="form-block-title"><span class="form-num">10</span>您是否愿意继续使用？</div>
+          <div class="opt-list">
+            <label class="opt"><input type="radio" name="f10" value="yes"><span class="opt-indicator"></span>愿意，会继续购买</label>
+            <label class="opt"><input type="radio" name="f10" value="maybe"><span class="opt-indicator"></span>看情况</label>
+            <label class="opt"><input type="radio" name="f10" value="no"><span class="opt-indicator"></span>不愿意</label>
+          </div>
+        </div>
+        <button type="button" class="btn btn-gold btn-block" onclick="submitFollowup()">提交随访</button>
+      </form>
+
+      <div class="result-box" id="followupResultBox">
+        <span class="result-tag">随访结果</span>
+        <div class="result-title" id="followupResultTitle"></div>
+        <div class="result-body" id="followupResultBody"></div>
+        <div class="result-saved" id="followupResultSaved"></div>
+        <div class="result-actions">
+          <button class="btn btn-primary btn-sm" onclick="go('family')">查看家庭端同步</button>
+          <button class="btn btn-ghost btn-sm" onclick="resetFollowup()">重新填写</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- 使用指南 -->
+<section class="page" id="page-guide">
+  <div class="section">
+    <div class="section-head">
+      <span class="section-tag">Guide</span>
+      <h2 class="section-title">使用指南</h2>
+      <p class="section-desc">大字版说明，一步一图，老人自己就能操作</p>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="step-num">01</div><div class="step-body"><h4>系上定位带</h4><p>前片脐孔对准肚脐，耻骨缺口卡住耻骨上缘；后片髂嵴对位带卡在两侧胯骨最高点，调节松紧至舒适。</p></div></div>
+      <div class="step"><div class="step-num">02</div><div class="step-body"><h4>卡入贴芯</h4><p>将贴芯从定位带外侧卡入窗口，胶面穿过窗口贴到皮肤，定位带压住贴芯边缘防止卷边。</p></div></div>
+      <div class="step"><div class="step-num">03</div><div class="step-body"><h4>贴敷与更换</h4><p>贴敷6-8小时，每日睡前使用，次日晨起揭除，更换新贴芯。定位带可反复清洗使用。</p></div></div>
+    </div>
+
+    <div class="product-flow" style="margin-top:40px;">
+      <div class="flow-item" onclick="showModal('常见问题', '贴芯建议每日更换，一盒12贴，按需复购。定位带可手洗，水温不超过40℃，自然晾干，避免暴晒。')">
+        <div class="flow-icon"><div class="flow-icon-ring"></div>
+          <svg viewBox="0 0 120 120" fill="none"><circle cx="60" cy="60" r="36" stroke="#B8935A" stroke-width="2.5"/><path d="M60 40 L60 64" stroke="#B8935A" stroke-width="3" stroke-linecap="round"/><circle cx="60" cy="78" r="3" fill="#B8935A"/></svg>
+        </div>
+        <div class="flow-body">
+          <div class="flow-tag">FAQ</div>
+          <div class="flow-title">贴芯多久换一次？</div>
+          <div class="flow-desc">建议每日更换，一盒12贴，按需复购。定位带可反复清洗使用，无需每日更换。</div>
+        </div>
+        <div class="flow-arrow">→</div>
+      </div>
+
+      <div class="flow-item" onclick="showModal('皮肤过敏处理', '若出现瘙痒、起疹，立即停用，保持皮肤清洁，必要时咨询医生。使用前建议做皮肤斑贴测试。')">
+        <div class="flow-icon"><div class="flow-icon-ring"></div>
+          <svg viewBox="0 0 120 120" fill="none"><rect x="34" y="30" width="52" height="60" rx="14" stroke="#2E7D5B" stroke-width="2.5"/><path d="M46 52 Q60 46 74 52" stroke="#2E7D5B" stroke-width="2.5" stroke-linecap="round"/><path d="M46 64 Q60 58 74 64" stroke="#2E7D5B" stroke-width="2.5" stroke-linecap="round"/><path d="M46 76 Q60 70 74 76" stroke="#2E7D5B" stroke-width="2.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="flow-body">
+          <div class="flow-tag">FAQ</div>
+          <div class="flow-title">皮肤过敏怎么办？</div>
+          <div class="flow-desc">若出现瘙痒、起疹，立即停用，保持皮肤清洁。说明书明确提示使用前做皮肤斑贴测试。</div>
+        </div>
+        <div class="flow-arrow">→</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 健康科普 -->
+<section class="page" id="page-science">
+  <div class="section">
+    <div class="knowledge-hero">
+      <span class="knowledge-hero-tag">Health Knowledge</span>
+      <h2 class="knowledge-hero-title">中老年男性健康科普</h2>
+      <p class="knowledge-hero-desc">前列腺健康、夜尿问题、下焦养护，是中老年男性最关心却最难开口的健康话题。我们整理了一系列科普内容，帮助您和家人了解身体变化，掌握日常养护方法，在需要时及时就医。</p>
+    </div>
+
+    <div class="knowledge-list">
+      <div class="knowledge-card" onclick="showModal('什么是良性前列腺增生', '良性前列腺增生是中老年男性最常见的良性泌尿系统疾病。随着年龄增长，前列腺组织逐渐增生，压迫尿道，导致排尿困难、尿频、夜尿增多等症状。50岁以上男性患病率约40%~50%，70岁以上达60%，80岁以上超过80%。如果出现排尿困难、夜尿频繁、尿线变细等情况，建议及时到泌尿外科就诊。')">
+        <div class="knowledge-card-head"><div class="knowledge-num">01</div><div class="knowledge-card-title">什么是良性前列腺增生？</div></div>
+        <div class="knowledge-card-body">良性前列腺增生是中老年男性最常见的良性泌尿系统疾病。50岁以上男性患病率约40%~50%，70岁以上达60%，80岁以上超过80%。</div>
+        <span class="knowledge-card-more">阅读全文</span>
+      </div>
+
+      <div class="knowledge-card" onclick="showModal('夜尿多，不只是睡不好', '夜尿频多不仅影响睡眠质量，还会增加心脑血管意外的发生风险。夜间频繁起床会导致血压波动、心率失常，对本身有高血压、冠心病的中老年男性尤其危险。如果每晚起夜超过2次，建议关注前列腺健康，必要时到泌尿外科就诊。日常可通过睡前2小时减少饮水、避免饮酒和辛辣食物等方式改善。')">
+        <div class="knowledge-card-head"><div class="knowledge-num">02</div><div class="knowledge-card-title">夜尿多，不只是睡不好</div></div>
+        <div class="knowledge-card-body">夜尿频多不仅影响睡眠质量，还会增加心脑血管意外的发生风险。如果每晚起夜超过2次，建议关注前列腺健康。</div>
+        <span class="knowledge-card-more">阅读全文</span>
+      </div>
+
+      <div class="knowledge-card" onclick="showModal('什么是肾阳不足型', '肾阳不足是中医常见证型，表现为尿频清长、腰膝酸冷、畏寒、手脚冰凉、精神疲倦等。中老年男性因肾气渐衰，膀胱气化失常，容易出现这些不适。日常调理宜温肾助阳，可通过饮食调理（如生姜、羊肉、桂圆）、穴位保健（如按摩关元穴）、物理刺激（如穴位贴敷）等方式进行。')">
+        <div class="knowledge-card-head"><div class="knowledge-num">03</div><div class="knowledge-card-title">什么是肾阳不足型？</div></div>
+        <div class="knowledge-card-body">肾阳不足表现为尿频清长、腰膝酸冷、畏寒、手脚冰凉等。中老年男性因肾气渐衰，容易出现这些不适。</div>
+        <span class="knowledge-card-more">阅读全文</span>
+      </div>
+
+      <div class="knowledge-card" onclick="showModal('穴位贴敷为什么能起作用', '穴位贴敷是中医外治法的一种，通过物理刺激特定穴位，调节经络气血。常用穴位包括关元（脐下3寸）、命门（第2腰椎棘突下）、肾俞（第2腰椎棘突下旁开1.5寸）等。本产品采用球状凸点施加物理外力，无药物成分，按第一类医疗器械“穴位压力刺激器具”合规备案，安全无刺激。')">
+        <div class="knowledge-card-head"><div class="knowledge-num">04</div><div class="knowledge-card-title">穴位贴敷为什么能起作用？</div></div>
+        <div class="knowledge-card-body">穴位贴敷通过物理刺激特定穴位，调节经络气血。本产品采用球状凸点施加物理外力，无药物成分，安全无刺激。</div>
+        <span class="knowledge-card-more">阅读全文</span>
+      </div>
+
+      <div class="knowledge-card" onclick="showModal('中老年男性日常养护建议', '①饮食：少辛辣、少饮酒，多吃蔬菜水果和温热食物；②作息：避免久坐，每45分钟起身活动5分钟；③饮水：白天多喝水，睡前2小时减少饮水；④保暖：注意腰腹保暖，避免受凉；⑤运动：适当进行散步、太极等温和运动；⑥体检：50岁以上男性建议每年做一次前列腺检查。')">
+        <div class="knowledge-card-head"><div class="knowledge-num">05</div><div class="knowledge-card-title">中老年男性日常养护建议</div></div>
+        <div class="knowledge-card-body">饮食少辛辣、作息避免久坐、睡前减少饮水、注意腰腹保暖、适当温和运动、每年一次前列腺检查。</div>
+        <span class="knowledge-card-more">阅读全文</span>
+      </div>
+
+      <div class="knowledge-card" onclick="showModal('什么时候应该就医', '如果出现以下情况，建议尽快到正规医院泌尿外科就诊：①尿中带血；②完全尿不出来；③排尿剧痛；④发烧伴有腰痛；⑤症状持续加重；⑥夜尿频繁严重影响睡眠。本产品为日常康养辅助工具，不替代药品和医疗器械。若症状严重，请及时就医。')">
+        <div class="knowledge-card-head"><div class="knowledge-num">06</div><div class="knowledge-card-title">什么时候应该就医？</div></div>
+        <div class="knowledge-card-body">尿中带血、完全尿不出来、排尿剧痛、发烧伴腰痛、症状持续加重，建议尽快到泌尿外科就诊。</div>
+        <span class="knowledge-card-more">阅读全文</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 家庭端 -->
+<section class="page" id="page-family">
+  <div class="section">
+    <div class="family-header">
+      <h2>家庭端</h2>
+      <div class="family-sync-tip"><span class="dot"></span>数据实时同步自老人端</div>
+    </div>
+
+    <div class="family-grid">
+      <div class="family-card">
+        <div class="family-card-head">
+          <div class="family-card-title"><span class="num-badge">1</span>使用前评估</div>
+          <span class="family-card-badge">同步自测评</span>
+        </div>
+        <div id="familyPre"><div class="family-empty">暂无记录<br>请提醒老人完成使用前评估</div></div>
+      </div>
+
+      <div class="family-card">
+        <div class="family-card-head">
+          <div class="family-card-title"><span class="num-badge">2</span>使用中记录</div>
+          <span class="family-card-badge">贴敷打卡</span>
+        </div>
+        <div id="familyRecords"><div class="family-empty">暂无记录<br>请提醒老人使用后填写</div></div>
+      </div>
+
+      <div class="family-card">
+        <div class="family-card-head">
+          <div class="family-card-title"><span class="num-badge">3</span>使用后随访</div>
+          <span class="family-card-badge">每周追踪</span>
+        </div>
+        <div id="familyFeedback"><div class="family-empty">暂无随访记录</div></div>
+      </div>
+
+      <div class="family-card">
+        <div class="family-card-head">
+          <div class="family-card-title"><span class="num-badge">4</span>家庭档案与复购</div>
+          <span class="family-card-badge">汇总</span>
+        </div>
+        <div id="familySummary"><div class="family-empty">暂无汇总数据</div></div>
+        <button class="btn btn-gold btn-block" style="margin-top:20px;" onclick="showModal('一键复购', '模拟下单：贴芯已加入购物车。实际产品中将跳转至商城完成支付。')">一键复购贴芯</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 关于我们 -->
+<section class="page" id="page-about">
+  <div class="section">
+    <div class="section-head">
+      <span class="section-tag">About</span>
+      <h2 class="section-title">关于我们</h2>
+      <p class="section-desc">迎男而解——中老年男性穴位贴敷定位系统</p>
+    </div>
+
+    <div class="product-flow">
+      <div class="flow-item">
+        <div class="flow-icon"><div class="flow-icon-ring"></div>
+          <svg viewBox="0 0 120 120" fill="none"><path d="M60 28 L90 44 L90 76 L60 92 L30 76 L30 44 Z" stroke="#B8935A" stroke-width="2.5" stroke-linejoin="round"/><path d="M60 28 L60 92" stroke="#B8935A" stroke-width="2" opacity="0.4"/><path d="M30 44 L90 44" stroke="#B8935A" stroke-width="2" opacity="0.4"/></svg>
+        </div>
+        <div class="flow-body">
+          <div class="flow-tag">Project</div>
+          <div class="flow-title">项目简介</div>
+          <div class="flow-desc">迎男而解聚焦中老年男性下焦康养，研发“腰带式定位带+可替换贴芯+子女端小程序”三层结构，解决“贴不准、不敢买、没人管”三大痛点。</div>
+        </div>
+      </div>
+
+      <div class="flow-item">
+        <div class="flow-icon"><div class="flow-icon-ring"></div>
+          <svg viewBox="0 0 120 120" fill="none"><circle cx="48" cy="46" r="14" stroke="#2E7D5B" stroke-width="2.5"/><circle cx="72" cy="46" r="14" stroke="#2E7D5B" stroke-width="2.5"/><path d="M28 92 Q48 70 68 92" stroke="#2E7D5B" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M52 92 Q72 70 92 92" stroke="#2E7D5B" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>
+        </div>
+        <div class="flow-body">
+          <div class="flow-tag">Team</div>
+          <div class="flow-title">团队介绍</div>
+          <div class="flow-desc">团队由湖南中医药高等专科学校跨专业学生组成，涵盖中医学、康复保健、医疗美容、药物制剂、生物制药等方向，在社区义诊、医院调研、产品打样等实践中不断改进产品。</div>
+        </div>
+      </div>
+
+      <div class="flow-item">
+        <div class="flow-icon"><div class="flow-icon-ring"></div>
+          <svg viewBox="0 0 120 120" fill="none"><rect x="32" y="24" width="56" height="72" rx="8" stroke="#4A2E1A" stroke-width="2.5"/><path d="M44 44 L76 44" stroke="#4A2E1A" stroke-width="2.5" stroke-linecap="round" opacity="0.6"/><path d="M44 58 L76 58" stroke="#4A2E1A" stroke-width="2.5" stroke-linecap="round" opacity="0.6"/><path d="M44 72 L64 72" stroke="#4A2E1A" stroke-width="2.5" stroke-linecap="round" opacity="0.6"/><circle cx="76" cy="76" r="12" stroke="#4A2E1A" stroke-width="2.5"/><path d="M71 76 L75 80 L82 72" stroke="#4A2E1A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="flow-body">
+          <div class="flow-tag">IP</div>
+          <div class="flow-title">知识产权</div>
+          <div class="flow-desc">已提交实用新型专利申请，保护“一种可穿戴式穴位贴敷定位带及穴位贴敷组件”的核心结构。同时布局发明专利、外观设计专利、软件著作权与商标注册。</div>
+        </div>
+      </div>
+
+      <div class="flow-item">
+        <div class="flow-icon"><div class="flow-icon-ring"></div>
+          <svg viewBox="0 0 120 120" fill="none"><path d="M60 30 L60 90" stroke="#B84A3A" stroke-width="2.5" stroke-linecap="round"/><path d="M40 50 L60 30 L80 50" stroke="#B84A3A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="60" cy="90" r="18" stroke="#B84A3A" stroke-width="2.5" fill="none"/></svg>
+        </div>
+        <div class="flow-body">
+          <div class="flow-tag">Notice</div>
+          <div class="flow-title">免责声明</div>
+          <div class="flow-desc">本产品为日常康养保健辅助工具，不替代药品和医疗器械。若症状严重，请及时前往正规医院就诊。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<nav class="mobile-nav">
+  <div class="mobile-nav-inner">
+    <div class="mobile-nav-item active" data-nav="home" onclick="go('home')"><span class="icon">🏠</span><span>首页</span></div>
+    <div class="mobile-nav-item" data-nav="product" onclick="go('product')"><span class="icon">📦</span><span>产品</span></div>
+    <div class="mobile-nav-item" data-nav="quiz" onclick="go('quiz')"><span class="icon">📋</span><span>测评</span></div>
+    <div class="mobile-nav-item" data-nav="family" onclick="go('family')"><span class="icon">👨‍👩‍👧</span><span>家庭</span></div>
+    <div class="mobile-nav-item" data-nav="science" onclick="go('science')"><span class="icon">💡</span><span>科普</span></div>
+  </div>
+</nav>
+
+<div class="modal-mask" id="modalMask">
+  <div class="modal-box">
+    <h3 id="modalTitle">提示</h3>
+    <p id="modalText"></p>
+    <button class="btn btn-primary btn-block" onclick="closeModal()">我知道了</button>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-brand">迎男而解</div>
+  <div class="footer-slogan">让天下老人，夜能安寝，老有所安</div>
+  <div class="footer-links">
+    <button onclick="go('home')">首页</button>
+    <button onclick="go('product')">产品体系</button>
+    <button onclick="go('quiz')">穴位测评</button>
+    <button onclick="go('guide')">使用指南</button>
+    <button onclick="go('science')">健康科普</button>
+    <button onclick="go('family')">家庭端</button>
+    <button onclick="go('about')">关于我们</button>
+  </div>
+  <div class="footer-divider"></div>
+  <div class="footer-disclaimer">本产品为日常康养保健辅助工具，不替代药品和医疗器械。若症状严重，请及时前往正规医院就诊。</div>
+</footer>
+
+<script>
+var STORAGE_KEY = 'yingnanerjie_data_v6';
+
+function go(id) {
+  document.querySelectorAll('.page').forEach(function (p) { p.classList.remove('active'); });
+  var target = document.getElementById('page-' + id);
+  if (target) target.classList.add('active');
+  document.querySelectorAll('[data-nav]').forEach(function (el) {
+    el.classList.remove('active');
+    if (el.getAttribute('data-nav') === id) el.classList.add('active');
+  });
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (id === 'family') renderFamily();
+}
+
+function showModal(title, text) {
+  document.getElementById('modalTitle').innerText = title;
+  document.getElementById('modalText').innerText = text;
+  document.getElementById('modalMask').classList.add('show');
+}
+function closeModal() {
+  document.getElementById('modalMask').classList.remove('show');
+}
+
+function switchTab(tab) {
+  document.querySelectorAll('.tab-btn').forEach(function (b) {
+    b.classList.remove('active');
+    if (b.getAttribute('data-tab') === tab) b.classList.add('active');
+  });
+  document.querySelectorAll('.tab-panel').forEach(function (p) {
+    p.classList.remove('active');
+  });
+  var panel = document.getElementById('tab-' + tab);
+  if (panel) panel.classList.add('active');
+  window.scrollTo({ top: 120, behavior: 'smooth' });
+}
+
+function pickTongue(val, el) {
+  document.querySelectorAll('.tongue-item').forEach(function (t) { t.classList.remove('selected'); });
+  el.classList.add('selected');
+  document.getElementById('q_tcm8').value = val;
+  updateProgress();
+}
+
+function updateProgress() {
+  var total = 22, done = 0;
+  if (document.getElementById('q_age').value) done++;
+  if (document.getElementById('q_waist').value) done++;
+  var names = ['q_live','q_used','q_ipss1','q_ipss2','q_ipss3','q_ipss4','q_ipss5','q_ipss6','q_ipss7','q_tcm1','q_tcm2','q_tcm3','q_tcm4','q_tcm5','q_tcm6','q_tcm7','q_life1','q_life2','q_life3'];
+  names.forEach(function (n) {
+    if (document.querySelector('input[name="' + n + '"]:checked')) done++;
+  });
+  if (document.getElementById('q_tcm8').value) done++;
+  var percent = Math.round((done / total) * 100);
+  document.getElementById('progressNum').innerText = done;
+  document.getElementById('progressFill').style.width = percent + '%';
+}
+
+function updateFollowupProgress() {
+  var total = 10, done = 0;
+  var names = ['f1','f2','f3','f4','f5','f6','f8','f9','f10'];
+  names.forEach(function (n) {
+    if (document.querySelector('input[name="' + n + '"]:checked')) done++;
+  });
+  if (document.getElementById('f7').value) done++;
+  var percent = Math.round((done / total) * 100);
+  document.getElementById('followupProgressNum').innerText = done;
+  document.getElementById('followupProgressFill').style.width = percent + '%';
+}
+
+function saveData(key, data) {
+  try {
+    var all = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+    if (!all[key]) all[key] = [];
+    all[key].push(data);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(all));
+    return true;
+  } catch (e) { console.error('保存失败:', e); return false; }
+}
+
+function loadData(key) {
+  try {
+    var all = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+    return all[key] || [];
+  } catch (e) { return []; }
+}
+
+function loadLatest(key) {
+  var list = loadData(key);
+  return list.length > 0 ? list[list.length - 1] : null;
+}
+
+function submitQuiz() {
+  var age = document.getElementById('q_age').value;
+  var waist = document.getElementById('q_waist').value;
+  if (!age || !waist) { showModal('提示', '请填写年龄和腰围'); return; }
+  var live = document.querySelector('input[name="q_live"]:checked');
+  var used = document.querySelector('input[name="q_used"]:checked');
+  if (!live || !used) { showModal('提示', '请完成基本信息题目'); return; }
+  for (var i = 1; i <= 7; i++) {
+    if (!document.querySelector('input[name="q_ipss' + i + '"]:checked')) { showModal('提示', '请完成 IPSS 评分第 ' + i + ' 题'); return; }
+  }
+  for (var j = 1; j <= 7; j++) {
+    if (!document.querySelector('input[name="q_tcm' + j + '"]:checked')) { showModal('提示', '请完成中医证型辨识第 ' + j + ' 题'); return; }
+  }
+  if (!document.getElementById('q_tcm8').value) { showModal('提示', '请选择舌苔图片'); return; }
+
+  var ipssSum = 0;
+  for (var k = 1; k <= 7; k++) { ipssSum += parseInt(document.querySelector('input[name="q_ipss' + k + '"]:checked').value); }
+
+  var yangScore = 0;
+  var t1 = document.querySelector('input[name="q_tcm1"]:checked'); if (t1 && t1.value === 'ache') yangScore += 3;
+  var t2 = document.querySelector('input[name="q_tcm2"]:checked'); if (t2 && t2.value === 'cold') yangScore += 2;
+  var t3 = document.querySelector('input[name="q_tcm3"]:checked'); if (t3 && t3.value === 'clear') yangScore += 3;
+  var t4 = document.querySelector('input[name="q_tcm4"]:checked'); if (t4 && t4.value === 'sweat') yangScore += 2;
+  var t5 = document.querySelector('input[name="q_tcm5"]:checked'); if (t5 && t5.value === 'hotwater') yangScore += 2;
+  var t6 = document.querySelector('input[name="q_tcm6"]:checked'); if (t6 && t6.value === 'tired') yangScore += 1;
+  var t7 = document.querySelector('input[name="q_tcm7"]:checked'); if (t7 && t7.value === 'cold') yangScore += 2;
+  var t8 = document.getElementById('q_tcm8').value; if (t8 === 'pale') yangScore += 2;
+  var l1 = document.querySelector('input[name="q_life1"]:checked'); if (l1 && l1.value === 'retire') yangScore += 1;
+  var l2 = document.querySelector('input[name="q_life2"]:checked'); if (l2 && l2.value === 'never') yangScore += 1;
+  var l3 = document.querySelector('input[name="q_life3"]:checked'); if (l3 && l3.value === 'chronic') yangScore += 1;
+
+  var type, advice;
+  if (yangScore >= 8) {
+    type = '肾阳不足型';
+    advice = '推荐使用温养型贴芯，贴敷关元、命门、肾俞。每日睡前一贴，配合温水泡脚。<br><br><strong>饮食建议：</strong>宜温热饮食，如生姜、羊肉、桂圆。<br><strong>作息建议：</strong>避免久坐，睡前2小时减少饮水。<br><strong>穴位保健：</strong>每日顺时针按摩关元穴3-5分钟。';
+  } else if (yangScore >= 4) {
+    type = '偏肾阳不足倾向';
+    advice = '建议先小范围试用，观察体感变化。推荐贴敷关元、肾俞，每日一贴。<br><br><strong>饮食建议：</strong>适当增加温热食物，避免生冷。<br><strong>作息建议：</strong>注意腰腹保暖，避免久坐。';
+  } else {
+    type = '其他证型倾向';
+    advice = '您的证型倾向不明显，建议咨询专业中医师后再选择合适的产品。日常注意规律作息，避免久坐。';
+  }
+
+  var size = 'M';
+  if (waist < 75) size = 'S';
+  else if (waist > 90) size = 'L';
+
+  if (ipssSum >= 20) { showModal('重要提醒', '您的症状评分较高，建议尽快前往正规医院泌尿外科就诊。本产品仅限日常康养辅助。'); }
+
+  var tongueMap = { yellow: '舌苔黄腻', purple: '舌质紫暗有瘀斑', pale: '舌淡胖有齿痕', red: '舌红少苔' };
+  var tongueText = tongueMap[t8] || '未选择';
+
+  document.getElementById('resultTitle').innerText = type + '（' + size + '码）';
+  document.getElementById('resultBody').innerHTML = advice +
+    '<br><br><strong>IPSS总分：</strong>' + ipssSum + '分（0-7轻度，8-19中度，20-35重度）' +
+    '<br><strong>推荐定位带尺码：</strong>' + size + '码' +
+    '<br><strong>舌苔选择：</strong>' + tongueText;
+  document.getElementById('resultBox').classList.add('show');
+  document.getElementById('resultBox').scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+  var saved = saveData('assessments', {
+    age: age, waist: waist, type: type, size: size, ipss: ipssSum, tongue: tongueText,
+    date: new Date().toLocaleDateString('zh-CN')
+  });
+
+  document.getElementById('resultSaved').innerText = saved ? '✓ 已自动保存到家庭端，子女可查看' : '⚠ 保存失败';
+  renderFamily();
+}
+
+function resetQuiz() {
+  document.getElementById('quizForm').reset();
+  document.getElementById('q_tcm8').value = '';
+  document.querySelectorAll('.tongue-item').forEach(function (t) { t.classList.remove('selected'); });
+  document.getElementById('resultBox').classList.remove('show');
+  updateProgress();
+}
+
+function submitFollowup() {
+  var required = ['f1','f2','f3','f4','f5','f6','f8','f9','f10'];
+  for (var i = 0; i < required.length; i++) {
+    if (!document.querySelector('input[name="' + required[i] + '"]:checked')) { showModal('提示', '请完成所有必填题目'); return; }
+  }
+  var f7 = document.getElementById('f7').value;
+  var f8 = document.querySelector('input[name="f8"]:checked').value;
+  var f4 = document.querySelector('input[name="f4"]:checked').value;
+  var f5 = document.querySelector('input[name="f5"]:checked').value;
+  var f6 = document.querySelector('input[name="f6"]:checked').value;
+  var f9 = document.querySelector('input[name="f9"]:checked').value;
+  var f10 = document.querySelector('input[name="f10"]:checked').value;
+
+  var advice = '';
+  if (f8 === 'itch' || f8 === 'blister') { advice += '⚠️ 您出现皮肤反应，请暂停使用，保持皮肤清洁，必要时咨询皮肤科医生。<br><br>'; }
+  else { advice += '✅ 皮肤状况良好，继续使用。<br><br>'; }
+
+  var trend = {};
+  if (f4 === 'less') { advice += '📉 夜尿次数减少，继续坚持。<br>'; trend.night = '减少'; }
+  if (f4 === 'more') { advice += '📈 夜尿次数增多，建议检查贴敷穴位是否准确。<br>'; trend.night = '增多'; }
+  if (f4 === 'same') { trend.night = '持平'; }
+
+  if (f5 === 'better') { advice += '📉 排尿不适改善，继续坚持。<br>'; trend.urine = '改善'; }
+  if (f5 === 'worse') { advice += '📈 排尿不适加重，请暂停使用并就医。<br>'; trend.urine = '加重'; }
+  if (f5 === 'same') { trend.urine = '持平'; }
+  if (f5 === 'slight') { trend.urine = '稍微改善'; }
+
+  if (f6 === 'better') { advice += '📉 睡眠质量改善，继续坚持。<br>'; trend.sleep = '改善'; }
+  if (f6 === 'worse') { advice += '📈 睡眠质量变差，请调整作息并咨询医生。<br>'; trend.sleep = '变差'; }
+  if (f6 === 'same') { trend.sleep = '持平'; }
+  if (f6 === 'slight') { trend.sleep = '稍微改善'; }
+
+  advice += '<br>📋 健康指导：<br>• 若症状改善：继续坚持贴敷，每4周复测一次。<br>• 若症状持平：检查穴位是否准确。<br>• 若症状加重：暂停使用，尽快前往医院泌尿外科就诊。<br>• 若出现皮肤反应：暂停贴敷，保持皮肤清洁。';
+
+  document.getElementById('followupResultTitle').innerText = '第 ' + (loadData('feedbacks').length + 1) + ' 次随访记录';
+  document.getElementById('followupResultBody').innerHTML = advice;
+  document.getElementById('followupResultBox').classList.add('show');
+  document.getElementById('followupResultBox').scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+  var saved = saveData('feedbacks', {
+    date: new Date().toLocaleDateString('zh-CN'),
+    f7: f7, skin: f8, satisfaction: f9, willContinue: f10,
+    trend: trend, advice: advice.replace(/<[^>]+>/g, '')
+  });
+
+  document.getElementById('followupResultSaved').innerText = saved ? '✓ 已保存到家庭端，子女可查看' : '⚠ 保存失败';
+  renderFamily();
+}
+
+function resetFollowup() {
+  document.getElementById('followupForm').reset();
+  document.getElementById('followupResultBox').classList.remove('show');
+  updateFollowupProgress();
+}
+
+function renderFamily() {
+  var pre = loadLatest('assessments');
+  var preDiv = document.getElementById('familyPre');
+  if (pre) {
+    preDiv.innerHTML =
+      '<div class="family-row"><span class="label">年龄</span><span class="val">' + pre.age + '岁</span></div>' +
+      '<div class="family-row"><span class="label">腰围</span><span class="val">' + pre.waist + 'cm</span></div>' +
+      '<div class="family-row"><span class="label">IPSS总分</span><span class="val">' + pre.ipss + '分</span></div>' +
+      '<div class="family-row"><span class="label">证型倾向</span><span class="val">' + pre.type + '</span></div>' +
+      '<div class="family-row"><span class="label">舌苔</span><span class="val">' + pre.tongue + '</span></div>' +
+      '<div class="family-row"><span class="label">推荐尺码</span><span class="val">' + pre.size + '码</span></div>' +
+      '<div class="family-row"><span class="label">评估日期</span><span class="val">' + pre.date + '</span></div>';
+  } else {
+    preDiv.innerHTML = '<div class="family-empty">暂无记录<br>请提醒老人完成使用前评估</div>';
+  }
+
+  var records = loadData('records');
+  var recDiv = document.getElementById('familyRecords');
+  if (records.length > 0) {
+    var html = '';
+    records.forEach(function (r) {
+      html += '<div class="family-row"><span class="label">' + r.date + ' ' + r.part + '</span><span class="val">舒适度 ' + (r.score || '未填') + '</span></div>';
+    });
+    recDiv.innerHTML = html;
+  } else {
+    recDiv.innerHTML = '<div class="family-empty">暂无记录<br>请提醒老人使用后填写</div>';
+  }
+
+  var feedbacks = loadData('feedbacks');
+  var postDiv = document.getElementById('familyFeedback');
+  if (feedbacks.length > 0) {
+    var html2 = '';
+    feedbacks.forEach(function (p) {
+      var skinText = '';
+      if (p.skin === 'itch' || p.skin === 'blister') skinText = '<span class="tag-danger">皮肤异常</span>';
+      else if (p.skin === 'red') skinText = '<span class="tag-warn">轻微发红</span>';
+      else skinText = '<span class="tag-ok">正常</span>';
+      html2 += '<div class="family-row"><span class="label">' + p.date + '</span><span>' + skinText + '</span></div>';
+      if (p.trend) {
+        html2 += '<div class="family-row" style="font-size:13px;color:var(--c-text-muted);"><span class="label">夜尿 ' + (p.trend.night || '-') + '</span><span>排尿 ' + (p.trend.urine || '-') + '</span><span>睡眠 ' + (p.trend.sleep || '-') + '</span></div>';
+      }
+    });
+    postDiv.innerHTML = html2;
+  } else {
+    postDiv.innerHTML = '<div class="family-empty">暂无随访记录</div>';
+  }
+
+  var sumDiv = document.getElementById('familySummary');
+  if (pre || feedbacks.length > 0) {
+    var summary = '';
+    if (pre) {
+      summary += '<div class="family-row"><span class="label">最近评估</span><span class="val">' + pre.date + '</span></div>';
+      summary += '<div class="family-row"><span class="label">证型</span><span class="val">' + pre.type + '</span></div>';
+      summary += '<div class="family-row"><span class="label">尺码</span><span class="val">' + pre.size + '码</span></div>';
+    }
+    if (feedbacks.length > 0) {
+      var latest = feedbacks[feedbacks.length - 1];
+      summary += '<div class="family-row"><span class="label">最近随访</span><span class="val">' + latest.date + '</span></div>';
+      if (latest.trend) {
+        summary += '<div class="family-row"><span class="label">夜尿趋势</span><span class="val">' + (latest.trend.night || '-') + '</span></div>';
+        summary += '<div class="family-row"><span class="label">排尿趋势</span><span class="val">' + (latest.trend.urine || '-') + '</span></div>';
+        summary += '<div class="family-row"><span class="label">睡眠趋势</span><span class="val">' + (latest.trend.sleep || '-') + '</span></div>';
+      }
+    }
+    summary += '<div class="family-row"><span class="label">贴芯余量</span><span class="val" style="color:var(--c-warning);">建议提前复购</span></div>';
+    sumDiv.innerHTML = summary;
+  } else {
+    sumDiv.innerHTML = '<div class="family-empty">暂无汇总数据</div>';
+  }
+}
+
+window.onload = function () {
+  renderFamily();
+  updateProgress();
+  updateFollowupProgress();
+};
+
+document.addEventListener('input', function (e) {
+  if (e.target.id === 'q_age' || e.target.id === 'q_waist') updateProgress();
+  if (e.target.id === 'f7') updateFollowupProgress();
+});
+</script>
+</body>
+</html>
